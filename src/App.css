@@ -1,0 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+
+
+.App {
+    text-align: center;
+}
+
+body {
+    background-color: gold;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.navbar {
+    background-color: black!important;
+}
+
+.buttoncolor {
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
