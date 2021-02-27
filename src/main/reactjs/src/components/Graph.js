@@ -3,14 +3,14 @@ import React, { Component } from "react";
 import CanvasJSReact from '../lib/canvasjs.stock.react';
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSStockChart = CanvasJSReact.CanvasJSStockChart;
- 
- 
+
+
 class Graph extends Component {
   constructor(props) {
     super(props);
     this.state = { dataPoints: [], isLoaded: false };
   }
- 
+
   componentDidMount() {
     //Reference: https://reactjs.org/docs/faq-ajax.html#example-using-ajax-results-to-set-local-state
     fetch("https://canvasjs.com/data/gallery/react/btcusd2017-18.json")
@@ -32,11 +32,11 @@ class Graph extends Component {
         }
       )
   }
- 
+
   render() {
     const options = {
-      title:{
-        text:"React StockChart with Spline Area Chart"
+      title: {
+        text: "React StockChart with Spline Area Chart"
       },
       theme: "ligh2",
       subtitles: [{
@@ -60,14 +60,14 @@ class Graph extends Component {
           }
         },
         axisZ: {
-            title: "Bitcoin Highest Price",
-            prefix: "$",
-            crosshair: {
-              enabled: true,
-              snapToDataPoint: true,
-              valueFormatString: "$#,###.##"
-            }
-          },
+          title: "Bitcoin Highest Price",
+          prefix: "$",
+          crosshair: {
+            enabled: true,
+            snapToDataPoint: true,
+            valueFormatString: "$#,###.##"
+          }
+        },
         toolTip: {
           shared: true
         },
@@ -79,7 +79,7 @@ class Graph extends Component {
           yValueFormatString: "$#,###.##",
           xValueFormatString: "MMM DD YYYY",
           zValueFormatString: "$#,###.##",
-          dataPoints : this.state.dataPoints
+          dataPoints: this.state.dataPoints
         }]
       }],
       navigator: {
@@ -95,13 +95,13 @@ class Graph extends Component {
       margin: "auto"
     };
     return (
-      <div> 
+      <div>
         <div>
           {
             // Reference: https://reactjs.org/docs/conditional-rendering.html#inline-if-with-logical--operator
-            this.state.isLoaded && 
-            <CanvasJSStockChart containerProps={containerProps} options = {options}
-              /* onRef = {ref => this.chart = ref} */
+            this.state.isLoaded &&
+            <CanvasJSStockChart containerProps={containerProps} options={options}
+            /* onRef = {ref => this.chart = ref} */
             />
           }
         </div>
@@ -109,5 +109,5 @@ class Graph extends Component {
     );
   }
 }
- 
+
 export default Graph;    
