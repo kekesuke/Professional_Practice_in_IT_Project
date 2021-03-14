@@ -1,4 +1,4 @@
-package com.graphapi.services;
+package com.graphapi.controllers;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.graphapi.exception.ApplicationException;
 import com.graphapi.exception.GraphNotFoundException;
-import com.graphapi.model.Graph;
+import com.graphapi.models.Graph;
 import com.graphapi.resource.Resource;
-import com.graphapi.service.IService;
+import com.graphapi.services.interfaces.IService;
 
 @RestController
 @RequestMapping("/graph")
 @CrossOrigin(origins="http://localhost:3000")
-public class GraphResourceService implements Resource<Graph> {
+public class GraphController implements Resource<Graph> {
 	
-	private static Logger log = LoggerFactory.getLogger(GraphResourceService.class);
+	private static Logger log = LoggerFactory.getLogger(GraphController.class);
 	
 	@Autowired
 	private IService<Graph> graphService;

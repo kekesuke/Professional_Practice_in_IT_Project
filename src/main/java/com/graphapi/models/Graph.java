@@ -1,4 +1,4 @@
-package com.graphapi.model;
+package com.graphapi.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

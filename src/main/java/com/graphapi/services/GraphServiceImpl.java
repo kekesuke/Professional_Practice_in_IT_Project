@@ -1,4 +1,4 @@
-package com.graphapi.service.impl;
+package com.graphapi.services;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -8,9 +8,9 @@ import org.codehaus.jettison.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.graphapi.model.Graph;
-import com.graphapi.repository.GraphRepository;
-import com.graphapi.service.IService;
+import com.graphapi.models.Graph;
+import com.graphapi.repositories.GraphRepository;
+import com.graphapi.services.interfaces.IService;
 
 @Service
 public class GraphServiceImpl implements IService<Graph> {

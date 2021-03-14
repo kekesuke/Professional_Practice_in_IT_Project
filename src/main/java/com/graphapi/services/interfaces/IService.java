@@ -1,4 +1,4 @@
-package com.graphapi.service;
+package com.graphapi.services.interfaces;
 
 import java.util.Collection;
 import java.util.Optional;

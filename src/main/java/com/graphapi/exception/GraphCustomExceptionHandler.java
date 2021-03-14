@@ -17,7 +17,7 @@ public class GraphCustomExceptionHandler {
 	}
 
 	@ExceptionHandler(value = GraphNotFoundException.class)
-	public ResponseEntity<String> bookNotFoundException(GraphNotFoundException exception) {
+	public ResponseEntity<String> graphNotFoundException(GraphNotFoundException exception) {
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		return new ResponseEntity<>(MethodUtils.prepareErrorJSON(status, exception), status);
 	}

@@ -5,8 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.graphapi.model.Graph;
-import com.graphapi.service.IService;
+import com.graphapi.models.Graph;
+import com.graphapi.services.interfaces.IService;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
