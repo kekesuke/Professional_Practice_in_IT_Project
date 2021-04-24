@@ -4,7 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Graph {
 	
 	
@@ -12,20 +16,18 @@ public class Graph {
 	private String id;
 	
 	@NotNull
-	private Float AvgVol10Day;
+	@JsonProperty("t")
+	private long date;
 	
 	@NotNull
-	private Float WeekHigh52;
+	@JsonProperty("c")
+	private Float close;
 	
 	@NotNull
-	private Float WeekLow52;
+	@JsonProperty("l")
+	private Float low;
 	
-	@NotNull
-	private String WeekLowDate52;
 	
-	@NotNull
-	private Float WeekPriceReturnDaily52;
-
 	public String getId() {
 		return id;
 	}
@@ -34,46 +36,33 @@ public class Graph {
 		this.id = id;
 	}
 
-	public Float getAvgVol10Day() {
-		return AvgVol10Day;
+	public long getDate() {
+		return date;
 	}
 
-	public void setAvgVol10Day(Float avgVol10Day) {
-		AvgVol10Day = avgVol10Day;
+	public void setDate(long date) {
+		this.date = date;
+	}
+	
+	public Float getLow() {
+			return low;
+	}
+	
+	public void setLow(Float low) {
+		this.low = low;
+	}
+	
+	public Float getClose() {
+		return close;
 	}
 
-	public Float getWeekHigh52() {
-		return WeekHigh52;
+	public void setClose(Float close) {
+		this.close = close;
 	}
 
-	public void setWeekHigh52(Float weekHigh52) {
-		WeekHigh52 = weekHigh52;
-	}
+	
 
-	public Float getWeekLow52() {
-		return WeekLow52;
-	}
-
-	public void setWeekLow52(Float weekLow52) {
-		WeekLow52 = weekLow52;
-	}
-
-	public String getWeekLowDate52() {
-		return WeekLowDate52;
-	}
-
-	public void setWeekLowDate52(String weekLowDate52) {
-		WeekLowDate52 = weekLowDate52;
-	}
-
-	public Float getWeekPriceReturnDaily52() {
-		return WeekPriceReturnDaily52;
-	}
-
-	public void setWeekPriceReturnDaily52(Float weekPriceReturnDaily52) {
-		WeekPriceReturnDaily52 = weekPriceReturnDaily52;
-	}
-
+	
 	
 	
 

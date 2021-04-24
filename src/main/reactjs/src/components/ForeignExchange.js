@@ -9,9 +9,10 @@ class ForeignExchange extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            graphs: [],
+            graphs: [], //we have to change that to currencies 
             currentPage: 1,
             graphsPerPage: 15,
+            selectedCurrency: "USD"
         }
     }
 
@@ -20,13 +21,14 @@ class ForeignExchange extends Component {
     }
 
     getForeignExchange() {
-        axios.get("https://finnhub.io/api/v1/forex/rates?base=USD&token=c0t93rv48v6r4maemvu0")
+        axios.get("https://finnhub.io/api/v1/forex/rates?base="+this.state.selectedCurrency+"&token=c0t93rv48v6r4maemvu0")
             .then(response => response.data)
             .then((data) => {
                 this.setState({ graphs: data.quote })
 
             });
     }
+
     changePage = event => {
         this.setState({
             [event.target.name]: parseInt(event.target.value)
@@ -65,6 +67,14 @@ class ForeignExchange extends Component {
         }
     };
 
+    dropDown = event => {
+        this.setState({selectedCurrency: event.target.value}, function () {
+            this.getForeignExchange();
+        });
+
+        
+    };
+    
     render() {
 
         const { graphs, currentPage, graphsPerPage } = this.state;
@@ -95,17 +105,12 @@ class ForeignExchange extends Component {
             <Card className={"border  border-dark bg-dark text-white text-center"}>
                 <Card.Header>ForeignExchange</Card.Header>
                 <Card.Body>
-                    <Dropdown>
-                        <Dropdown.Toggle variant="success" id="dropdown-basic">
-                            Dropdown Button
-                    </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                        Select Currency             
+                        <select defaultValue="USD" onChange={this.dropDown}>
+                        {Object.entries(graphs).map(([key, value]) => (
+                                 <option key={key} value={key}>{key} </option>
+                            ))}
+                        </select>
                     <Table bordered hover striped variant="dark" className={"text-white"}>
                         <thead>
                             <tr>
@@ -126,7 +131,7 @@ class ForeignExchange extends Component {
                         </tbody>
                     </Table>
                 </Card.Body>
-                <Card.Footer>
+                <Card.Footer className="footerMargin">
                     <div style={{ "float": "left" }}>
                         Showing Page {currentPage} of {totalPages}
                     </div>

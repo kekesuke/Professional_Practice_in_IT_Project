@@ -1,5 +1,5 @@
 import "./App.css";
-import React from 'react'
+import React, { Component } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
@@ -10,12 +10,21 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/user/Login';
 import Register from './components/user/Register'
+import {Provider} from 'react-redux'
+import store from './store'
+import {loadUser} from './actions/authActions'
 
-function App() {
-    const martinTop = {
-        marginTop: "20px"
-    }
+class App extends React.Component {
+        componentDidMount() {
+          store.dispatch(loadUser());
+        }
+        render() {
+            const martinTop = {
+                marginTop: "20px"
+            }
     return (
+        
+        <Provider store={store}>
         <Router>
             <NavigationBar />
             <Container>
@@ -34,8 +43,10 @@ function App() {
             </Container>
             <Footer />
         </Router>
+        </Provider>
 
     );
+    }
 }
 export default App;
 
